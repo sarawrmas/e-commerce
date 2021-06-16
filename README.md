@@ -18,7 +18,7 @@ THEN I am able to successfully create, update, and delete data in my database
 
 ## Fill Out the API Routes to Perform RESTful CRUD Operations
 Fill out the unfinished routes in:
-* product-routes.js
+<!-- * product-routes.js -->
 * tag-routes.js
 * category-routes.js
 
