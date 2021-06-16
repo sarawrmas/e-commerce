@@ -12,7 +12,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then(dbTagData => res.json(dbTagData));
+  .then(dbTagData => res.json(dbTagData))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 router.get('/:id', (req, res) => {
@@ -27,7 +31,11 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-  .then(dbTagData => res.json(dbTagData));
+  .then(dbTagData => res.json(dbTagData))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 router.post('/', (req, res) => {

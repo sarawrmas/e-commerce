@@ -37,3 +37,58 @@ Create the code needed in server.js to sync the Sequelize models to the MySQL da
 
 TAKE COMMENTED GREEN TEXT OUT OF CONNECTION.JS  
 SET FORCE TO FALSE IN SERVER.JS
+
+
+
+## GET ALL routes
+* Products: http://localhost:3001/api/products  
+* Categories: http://localhost:3001/api/categories  
+* Tags: http://localhost:3001/api/tags
+
+## GET ONE routes
+* Products: http://localhost:3001/api/products/1  
+* Categories: http://localhost:3001/api/categories/1  
+* Tags: http://localhost:3001/api/tags/1
+
+## POST routes
+* Products: http://localhost:3001/api/products/1  
+{
+  "product_name": "Iron Maiden Tank Top",
+  "price": 20.00,
+  "stock": 18,
+  "tagIds": [1]
+}
+
+* Categories: http://localhost:3001/api/categories/1  
+{
+  "category_name": "Jackets"
+}
+
+* Tags: http://localhost:3001/api/tags/1
+{
+  "tag_name": "pink"
+}
+
+## PUT routes
+* Products: http://localhost:3001/api/products/2  
+<!-- updates to blue -->
+{
+  "tagIds": [3]
+}
+
+* Categories: http://localhost:3001/api/categories/2
+<!-- updates "shorts" to "bottoms"   -->
+{
+  "category_name": "Bottoms"
+}
+
+* Tags: http://localhost:3001/api/tags/2
+<!-- updates "pop music" to "pop" -->
+{
+  "tag_name": "pop"
+}
+
+## DELETE routes
+* Products: http://localhost:3001/api/products/3  
+* Categories: http://localhost:3001/api/categories/3  
+* Tags: http://localhost:3001/api/tags/3
