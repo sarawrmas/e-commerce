@@ -1,44 +1,128 @@
 # E-commerce
 
-## Acceptance Criteria
-<!-- WHEN I add my database name, MySQL username, and MySQL password to an environment variable file  
-THEN I am able to connect to a database using Sequelize -->
+## Table of Contents
+* [Description](#description)
+* [Languages](#languages)
+* [Installation](#installation)
+* [Routes](#routes)
+* [Demonstration](#demonstration)
+* [Questions](#questions)
+* [Credits](#credits)
 
-<!-- WHEN I enter schema and seed commands  
-THEN a development database is created and is seeded with test data -->
+## Description
+As a manager at an internet retail company, you want a back end for your e-commerce website that uses the latest technologies so that you can compete with other e-commerce companies. The aptly named E-commerce application is here to help. With a few CRUD routes, you can:
+* Access products along with their categories and tags
+* Access categories along with their associated products
+* Access tags along with their associated products
+* Add new products, categories, and tags
+* Update a product's tags, a category name, and tag names
+* Delete any product, category, or tag
 
-<!-- WHEN I enter the command to invoke the application  
-THEN my server is started and the Sequelize models are synced to the MySQL database -->
+## Languages
+This application was built using:
+* JavaScript
+* Node/NPM
+* Dotenv
+* Express.js
+* MySQL2
+* Sequelize
 
-<!-- WHEN I open API GET routes in Insomnia Core for categories, products, or tags  
-THEN the data for each of these routes is displayed in a formatted JSON -->
+## Installation
+1. **Copy Link:** Hit the "Code" button within this GitHub repo to copy link.
+1. **Clone:** Use the command "git clone *paste link here*".
+1. **NPM:** Run the command **npm install** to install Node Package Manager and dependencies.
+1. **MySql:** Using MySQL shell command line, run the command **source db/schema.sql** to download the database to your remote workspace.
+1. **Seeds:** Using the repository's integrated terminal, run the command **npm run seed** to seed existing data to the database.
+1. **Connect to Server**: After following installation instructions above, use your integrated terminal to start the server with **npm start** or **node server.js.**
 
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core  
-THEN I am able to successfully create, update, and delete data in my database
+## Routes
+Navigate to Insomnia Core. Use the base link http://localhost:3001/api/*given spec*
 
-## Fill Out the API Routes to Perform RESTful CRUD Operations
-Fill out the unfinished routes in:
-<!-- * product-routes.js -->
-* tag-routes.js
-* category-routes.js
+Given specifications are outlined below.
 
-To perform CRUD operations:
-<!-- * GET routes to return all categories, all products, and all tags -->
-<!-- * GET routes to return a single category, a single product, and a single tag -->
-* POST, PUT, and DELETE routes for categories
+Example: to GET the product with an id of 1, add the 'products/*product id*' endpoint from the GET (one) category to the end of the base link:  
+http://localhost:3001/api/products/1  
+Run in Insomnia using the 'GET' route.
 
-HINT: Be sure to look at your module project's code for syntax help and use your model's column definitions to figure out what req.body will be for POST and PUT routes!
+**GET (all):**
+* products  
+* categories  
+* tags
+
+**GET (one):**
+* products/*product id*
+* categories/*category id*
+* tags/*tag id*
+
+**POST:**
+* products  
+JSON:  
+{  
+  "product_name": "*some string*",  
+  "price": *some decimal*,  
+  "stock": *some integer*,  
+  "tagIds": [*array of some integers*]  
+}
+
+* categories  
+JSON:  
+{  
+  "category_name": "*some string*"  
+}
+
+* tags  
+JSON:  
+{  
+  "tag_name": "*some string*"  
+}
+
+**PUT:**
+* products/*product id*  
+JSON:  
+{  
+  "tagIds": [*array of some integers*]  
+}
+
+* categories/*category id*  
+JSON:  
+{  
+  "category_name": "*some string*"  
+}
+
+* tags/*category id*  
+JSON:  
+{  
+  "tag_name": "*some string*"  
+}
+
+**DELETE:**
+* products/*product id*  
+* categories/*category id*  
+* tags/*category id*
+
+## Demonstration
+Would you like to see the back end of E-commerce in action?
+
+Watch this [demo](https://www.youtube.com/watch?v=JsFl8in5I6g).
+
+## Questions
+Have questions about this project?  
+GitHub: https://github.com/sarawrmas  
+Email: sara.m.adamski@gmail.com
+
+## Credits
+The Coding Bootcamp at UT Austin  
+Sara Adamski
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
 
 ## Seed the Database
 After creating the models and routes, run 'npm run seed' to seed data to your database so that you can test your routes.
 
 ## Sync Sequelize to the Database on Server Start
 Create the code needed in server.js to sync the Sequelize models to the MySQL database on server start.
-
-TAKE COMMENTED GREEN TEXT OUT OF CONNECTION.JS  
-SET FORCE TO FALSE IN SERVER.JS
-
-
 
 ## GET ALL routes
 * Products: http://localhost:3001/api/products  
@@ -51,7 +135,7 @@ SET FORCE TO FALSE IN SERVER.JS
 * Tags: http://localhost:3001/api/tags/1
 
 ## POST routes
-* Products: http://localhost:3001/api/products/1  
+* Products: http://localhost:3001/api/products  
 {
   "product_name": "Iron Maiden Tank Top",
   "price": 20.00,
@@ -59,12 +143,12 @@ SET FORCE TO FALSE IN SERVER.JS
   "tagIds": [1]
 }
 
-* Categories: http://localhost:3001/api/categories/1  
+* Categories: http://localhost:3001/api/categories 
 {
   "category_name": "Jackets"
 }
 
-* Tags: http://localhost:3001/api/tags/1
+* Tags: http://localhost:3001/api/tags
 {
   "tag_name": "pink"
 }
