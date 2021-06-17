@@ -29,11 +29,16 @@ This application was built using:
 
 ## Installation
 1. **Copy Link:** Hit the "Code" button within this GitHub repo to copy link.
-1. **Clone:** Use the command "git clone *paste link here*".
-1. **NPM:** Run the command **npm install** to install Node Package Manager and dependencies.
-1. **MySql:** Using MySQL shell command line, run the command **source db/schema.sql** to download the database to your remote workspace.
-1. **Seeds:** Using the repository's integrated terminal, run the command **npm run seed** to seed existing data to the database.
-1. **Connect to Server**: After following installation instructions above, use your integrated terminal to start the server with **npm start** or **node server.js.**
+2. **Clone:** Use the command "git clone *paste link here*".
+3. **NPM:** Run the command **npm install** to install Node Package Manager and dependencies.
+4. **Dotenv:** From your root folder, create a .env file with the following information:
+  * DB_NAME='ecommerce_db'
+  * DB_USER='*your mysql username*'
+  * DB_PW='*your mysql password*'  
+  Your MySQL login information will then be passed to config/connection.js. This is necessary to sync the Sequelize models to the MySQL database on server start.
+5. **MySql:** Using MySQL shell command line, run the command **source db/schema.sql** to download the database to your remote workspace.
+6. **Seeds:** Using the repository's integrated terminal, run the command **npm run seed** to seed existing data to the database.
+7. **Connect to Server**: After following installation instructions above, use your integrated terminal to start the server with **npm start** or **node server.js.**
 
 ## Routes
 Navigate to Insomnia Core. Use the base link http://localhost:3001/api/*given spec*
@@ -97,13 +102,15 @@ JSON:
 
 **DELETE:**
 * products/*product id*  
-* categories/*category id*  
+* categories/*category id* (see note below)  
 * tags/*category id*
 
-## Demonstration
-Would you like to see the back end of E-commerce in action?
+NOTE: Categories for products cannot be null! When running delete categories route, only delete categories that do not have associated products. To accomplish this, delete a category after using a POST route to create one.
 
-Watch this [demo](https://www.youtube.com/watch?v=JsFl8in5I6g).
+## Demonstration
+Would you like to see E-commerce back-end in action?
+
+Watch this [demo](https://youtu.be/8ABc2NKk8Z8).
 
 ## Questions
 Have questions about this project?  
@@ -111,68 +118,5 @@ GitHub: https://github.com/sarawrmas
 Email: sara.m.adamski@gmail.com
 
 ## Credits
-The Coding Bootcamp at UT Austin  
-Sara Adamski
-
-
-
-------------------------------------------------------------------------------------------------------------------------------
-
-## Seed the Database
-After creating the models and routes, run 'npm run seed' to seed data to your database so that you can test your routes.
-
-## Sync Sequelize to the Database on Server Start
-Create the code needed in server.js to sync the Sequelize models to the MySQL database on server start.
-
-## GET ALL routes
-* Products: http://localhost:3001/api/products  
-* Categories: http://localhost:3001/api/categories  
-* Tags: http://localhost:3001/api/tags
-
-## GET ONE routes
-* Products: http://localhost:3001/api/products/1  
-* Categories: http://localhost:3001/api/categories/1  
-* Tags: http://localhost:3001/api/tags/1
-
-## POST routes
-* Products: http://localhost:3001/api/products  
-{
-  "product_name": "Iron Maiden Tank Top",
-  "price": 20.00,
-  "stock": 18,
-  "tagIds": [1]
-}
-
-* Categories: http://localhost:3001/api/categories 
-{
-  "category_name": "Jackets"
-}
-
-* Tags: http://localhost:3001/api/tags
-{
-  "tag_name": "pink"
-}
-
-## PUT routes
-* Products: http://localhost:3001/api/products/2  
-<!-- updates to blue -->
-{
-  "tagIds": [3]
-}
-
-* Categories: http://localhost:3001/api/categories/2
-<!-- updates "shorts" to "bottoms"   -->
-{
-  "category_name": "Bottoms"
-}
-
-* Tags: http://localhost:3001/api/tags/2
-<!-- updates "pop music" to "pop" -->
-{
-  "tag_name": "pop"
-}
-
-## DELETE routes
-* Products: http://localhost:3001/api/products/3  
-* Categories: http://localhost:3001/api/categories/3  
-* Tags: http://localhost:3001/api/tags/3
+Models, CRUD routes, server connection: Sara Adamski  
+Database, seeds, dependencies: The Coding Bootcamp at UT Austin
